@@ -28,6 +28,7 @@
     "react-router": "^4.2.0",
     "redux": "^3.7.2",
     "webpack": "^3.10.0",
-    "webpack-dev-server": "^2.11.1"
+    "webpack-dev-server": "^2.11.1",
+    "youtube-api-search": "0.0.5"
   }
 }
