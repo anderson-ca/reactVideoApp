@@ -1,10 +1,24 @@
 import React from 'react';
 
 
-const SearchBar = () => {
+class SearchBar extends React.Component {
+    render() {
+        // the input element emits the change event.
+        /*
+        * This is the event handler inside the onChange value area, as a arrow function.
+        */
+        return <input onChange={(event) => console.log(event.target.value)}/>;
+    }
 
-    return <input />;
-};
+    /*
+    * This is the event handler without the es6 arrow function.
+    */
+    // // event handler.
+    // onInputChange(event) {
+    //     // event target value gives me access to the value of the input.
+    //     console.log(event.target.value);
+    // }
+}
 
-// EXPORT THE FUNCTIONALITY CONTAINED INSIDE THE SEARCH BAR MODULE.
+// export the functionality contained inside the search bar module.
 export default SearchBar;
