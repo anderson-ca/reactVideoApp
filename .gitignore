@@ -2,3 +2,10 @@ node_modules/*
 *.iml
 /.idea
 
+*.node_modules
+
+/node_modules
+
+/.node_modules
+
+/node_modules/.*
