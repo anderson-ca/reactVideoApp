@@ -1,12 +1,25 @@
 // import React(component name) from 'react'(file name).
 import React from 'react';
-
 import ReactDOM from 'react-dom';
+import YTsearch from 'youtube-api-search';
 
 // import from a component created by myself must have this path format.
 import SearchBar from './components/searchBar';
 
 const API_KEY = 'AIzaSyCoTqYxMyr_XKN5dCEuDtZV-WLLNsx7UpQ';
+
+
+// ajax call to youtube API.
+/*
+* This call uses the YTsearch and takes two arguments.
+* 1) an object with  my api key, and a the term im searching
+* 2) a callback function that returns that data retrieved from
+*    the search.
+*/
+YTsearch({key: API_KEY, term: 'muffins'}, function(data) {
+
+    console.log(data);
+});
 
 // create a new component. This component should produce some HTML.
 /*
@@ -21,7 +34,7 @@ const App = () => {
     */
     return (
         <div>
-            <SearchBar />
+            <SearchBar/>
         </div>
     );
 };
