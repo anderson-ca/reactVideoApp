@@ -9,13 +9,11 @@ import React from 'react';
 * a variable and later using that variable, I'm
 * using ES6 {video} (destructuring).
 */
-const VideoListItem = ({video}) => {
+const VideoListItem = ({video, onVideoSelect}) => {
 
     // retrieve properties from the video object in order to be used.
-    const videoUrl = video.snippet.thumbnails.default.url;
+    const imgUrl = video.snippet.thumbnails.default.url;
     const videoTitle = video.snippet.title;
-
-    console.log(video);
 
     // in order to access properties inside props I need dot notation.
     // let video = props.video; -> old way.
@@ -24,10 +22,10 @@ const VideoListItem = ({video}) => {
     * contain the data I wish to display to the user.
     */
     return (
-        <li className={"list-group-item"}>
+        <li onClick={() => onVideoSelect(video)} className={"list-group-item"}>
             <div className={"video-list-media"}>
                 <div className={"media-left"}>
-                    <img className={"media-object"} src={videoUrl}/>
+                    <img className={"media-object"} src={imgUrl}/>
                 </div>
 
                 <div className={"media-body"}>

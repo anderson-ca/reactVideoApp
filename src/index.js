@@ -28,12 +28,18 @@ class App extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = {videos: []};
+        this.state = {
+            videos: [],
+            selectedVideo: null
+        };
 
 
-        YTsearch({key: API_KEY, term: 'muffins'}, (videos) => {
+        YTsearch({key: API_KEY, term: 'surf'}, (videos) => {
 
-            this.setState({videos});
+            this.setState({
+                videos: videos,
+                selectedVideo: videos[0]
+                });
             // same as this.setState({ videos: videos });
         });
     }
@@ -47,10 +53,12 @@ class App extends React.Component {
         return (
             <div>
                 <SearchBar/>
-                <VideoDetail/>
+                <VideoDetail video={this.state.selectedVideo}/>
                 {/*this is called passing props. Passing properties
                  from one component to another*/}
-                <VideoList videos={this.state.videos}/>
+                <VideoList
+                    onVideoSelect={selectedVideo => this.setState({selectedVideo})}
+                    videos={this.state.videos}/>
             </div>
         );
     }
