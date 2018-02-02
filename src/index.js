@@ -57,6 +57,12 @@ class App extends React.Component {
                 {/*this is called passing props. Passing properties
                  from one component to another*/}
                 <VideoList
+                    // thumbnail click functionality explained: 1
+                    {/* ADD OnVideoSelect attribute to VideoList component(controlled element).
+                        as a value to the attribute pass a arrow function that will set the
+                        component state as the selectedVideo object. Therefore, passing the
+                        selectedVideo as an attribute to the VideoList component.
+                    */}
                     onVideoSelect={selectedVideo => this.setState({selectedVideo})}
                     videos={this.state.videos}/>
             </div>

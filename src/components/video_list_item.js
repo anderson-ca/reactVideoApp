@@ -22,6 +22,14 @@ const VideoListItem = ({video, onVideoSelect}) => {
     * contain the data I wish to display to the user.
     */
     return (
+        // thumbnail click functionality explained: 3
+        /*
+        * add a onClick event to the li. The onClick event should activate
+        * the onVideoSelect method that was passed down all the way from App
+        * component. As the onVideoSelect callback function is activated, with
+        * the props.video as an argument, the function will set the state for
+        * the App component.
+        */
         <li onClick={() => onVideoSelect(video)} className={"list-group-item"}>
             <div className={"video-list-media"}>
                 <div className={"media-left"}>
