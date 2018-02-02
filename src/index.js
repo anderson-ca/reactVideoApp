@@ -4,8 +4,9 @@ import ReactDOM from 'react-dom';
 import YTsearch from 'youtube-api-search';
 
 // import from a component created by myself must have this path format.
-import SearchBar from './components/searchBar';
-import VideoList from './components/videoList';
+import SearchBar from './components/search_bar';
+import VideoList from './components/video_list';
+import VideoDetail from './components/video_detail';
 
 const API_KEY = 'AIzaSyCoTqYxMyr_XKN5dCEuDtZV-WLLNsx7UpQ';
 
@@ -46,6 +47,7 @@ class App extends React.Component {
         return (
             <div>
                 <SearchBar/>
+                <VideoDetail/>
                 {/*this is called passing props. Passing properties
                  from one component to another*/}
                 <VideoList videos={this.state.videos}/>
