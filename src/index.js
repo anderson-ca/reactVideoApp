@@ -2,6 +2,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import YTsearch from 'youtube-api-search';
+import _ from 'lodash';
 
 // import from a component created by myself must have this path format.
 import SearchBar from './components/search_bar';
@@ -39,13 +40,17 @@ class App extends React.Component {
 
     }
 
-    // create video search method
+    // search-bar functionality explained: 1
     /*
     * This method will take one string argument. Afterwards
     * the method will assign the value to the term attribute
     * inside the object being passed to the YTsearch.
     */
     videoSearch(term) {
+        /*
+        * When the object obtains the argument, it returns
+        * related data from youtube.
+        */
         YTsearch({key: API_KEY, term: term}, (videos) => {
 
             this.setState({
@@ -54,7 +59,7 @@ class App extends React.Component {
             });
             // same as this.setState({ videos: videos });
         });
-}
+    }
 
     // JSX transpiles code to vanilla JS.
     /*
@@ -62,14 +67,31 @@ class App extends React.Component {
     */
     render() {
 
+        // lodash method(debounce) used to slowdown the search results.
+        /*
+        * method calls the videoSearch method and assigns the result to a variable,
+        * that in turn is passed to the onSearchTermChange. However, the method has
+        * a three second delay.
+        */
+        const videoSearch = _.debounce((term) => {
+            this.videoSearch(term)
+        }, 3000);
+
+        // search-bar functionality explained: 2
         return (
             <div>
-                <SearchBar onSearchTermChange={term => this.videoSearch(term)}/>
+                {/* Add an attribute to the SearchBar component, that takes an argument,
+                 and assigns a variable (term) to the videoSearch callback function. Therefore,
+                  the props object contained inside the SearchBar component will have access
+                  to the VideoSearch method, so values passed be the SearchBar component will
+                  reach the App component.
+                */}
+                <SearchBar onSearchTermChange={videoSearch}/>
                 <div className={"row"}>
 
                     <VideoDetail video={this.state.selectedVideo}/>
                     {/*this is called passing props. Passing properties
-                 from one component to another*/}
+                      from one component to another*/}
                     <VideoList
                         // thumbnail click functionality explained: 1
                         /* ADD OnVideoSelect attribute to VideoList component(controlled element).

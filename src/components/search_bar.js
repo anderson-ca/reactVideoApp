@@ -37,14 +37,35 @@ class SearchBar extends React.Component {
             <div className={"search-bar"}>
                 <input
                     value={this.state.term}
+                    // search-bar functionality explained: 3
+                    /* create an onChange attribute that has a callback function
+                    that takes an (event) argument. and passes the target.value
+                    of that variable as an argument to the onInputChange function.*/
                     onChange={(event) => this.onInputChange(event.target.value)}
                 />
             </div>
         );
     }
 
+    // search-bar functionality explained: 4
+    /*
+    * Create an onInputChange method that
+    * takes one argument, and set's the
+    * value to the term attribute inside
+    * the state object to that value (term).
+    * OBS: this method takes its argument
+    * from the onChange event being returned
+    * by the SearchBar component.
+    *
+    * Also, the since the SearchBar component
+    * has access to the onSearchTermchange,
+    * through props. I will call that method
+    * and assign term to it.
+    */
     onInputChange(term) {
+
         this.setState({term});
+
         this.props.onSearchTermChange(term);
     }
 
