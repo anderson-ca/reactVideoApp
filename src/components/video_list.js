@@ -24,10 +24,10 @@ const VideoList = (props) => {
         return (
             <VideoListItem
                 // thumbnail click functionality explained: 2
-                {/* Pass the obtained property(OnVideoSelect) from App component
-                    as a controlled element to the VideoListItem component.
-                    Therefore, adding a new property to the VideoListItem props.
-                 */}
+                /*Pass the obtained property(OnVideoSelect) from App component
+                as a controlled element to the VideoListItem component.
+                Therefore, adding a new property to the VideoListItem props.
+                */
                 onVideoSelect={props.onVideoSelect}
                 key={video.etag}
                 video={video}/>
