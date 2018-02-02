@@ -7,19 +7,33 @@ import React from 'react';
 *
 * instead of assigning the value inside props to
 * a variable and later using that variable, I'm
-* using ES6 {video}.
+* using ES6 {video} (destructuring).
 */
 const VideoListItem = ({video}) => {
+
+    // retrieve properties from the video object in order to be used.
+    const videoUrl = video.snippet.thumbnails.default.url;
+    const videoTitle = video.snippet.title;
 
     console.log(video);
 
     // in order to access properties inside props I need dot notation.
     // let video = props.video; -> old way.
+    /*
+    * markup (bootstrap classes) used to generate a proper way to
+    * contain the data I wish to display to the user.
+    */
     return (
         <li className={"list-group-item"}>
             <div className={"video-list-media"}>
                 <div className={"media-left"}>
-                    <img src="" alt=""/>
+                    <img className={"media-object"} src={videoUrl}/>
+                </div>
+
+                <div className={"media-body"}>
+                    <div className={"media-heading"}>
+                        {videoTitle}
+                    </div>
                 </div>
             </div>
         </li>
