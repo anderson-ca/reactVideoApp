@@ -34,8 +34,19 @@ class App extends React.Component {
             selectedVideo: null
         };
 
+        // initializing the videoSearch method with a dummy argument.
+        this.videoSearch('rick and morty');
 
-        YTsearch({key: API_KEY, term: 'surf'}, (videos) => {
+    }
+
+    // create video search method
+    /*
+    * This method will take one string argument. Afterwards
+    * the method will assign the value to the term attribute
+    * inside the object being passed to the YTsearch.
+    */
+    videoSearch(term) {
+        YTsearch({key: API_KEY, term: term}, (videos) => {
 
             this.setState({
                 videos: videos,
@@ -43,7 +54,7 @@ class App extends React.Component {
             });
             // same as this.setState({ videos: videos });
         });
-    }
+}
 
     // JSX transpiles code to vanilla JS.
     /*
@@ -53,7 +64,7 @@ class App extends React.Component {
 
         return (
             <div>
-                <SearchBar/>
+                <SearchBar onSearchTermChange={term => this.videoSearch(term)}/>
                 <div className={"row"}>
 
                     <VideoDetail video={this.state.selectedVideo}/>
