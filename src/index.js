@@ -32,7 +32,7 @@ class App extends React.Component {
 
         YTsearch({key: API_KEY, term: 'muffins'}, (videos) => {
 
-            this.setState({ videos });
+            this.setState({videos});
             // same as this.setState({ videos: videos });
         });
     }
@@ -45,10 +45,10 @@ class App extends React.Component {
 
         return (
             <div>
-                <SearchBar />
+                <SearchBar/>
                 {/*this is called passing props. Passing properties
                  from one component to another*/}
-                <VideoList videos={this.state.videos} />
+                <VideoList videos={this.state.videos}/>
             </div>
         );
     }

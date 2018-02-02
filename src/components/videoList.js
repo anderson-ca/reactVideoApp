@@ -21,7 +21,7 @@ const VideoList = (props) => {
         * has key value, which is used to make each element unique. Also,
         * a controlled element.
         */
-        return <VideoListItem key={video.etag} video={video} />
+        return <VideoListItem key={video.etag} video={video}/>
     });
 
     return (
